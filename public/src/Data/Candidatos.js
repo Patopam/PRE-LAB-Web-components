@@ -1,5 +1,16 @@
-export const candidates = [
-  { id: 1, name: "Juan Pérez", city: "Bogotá",  },
-  { id: 2, name: "María González", city: "Medellín", },
-  { id: 3, name: "Carlos Ramírez", city: "Cali", }
+const data = [
+	{
+		name: 'Carlos Felipe',
+		city: 'Bogota',
+	},
+	{
+		name: 'Mauricio',
+		city: 'Medellin',
+	},
+	{
+		name: 'Marcela',
+		city: 'Cali',
+	},
 ];
+
+export default data;

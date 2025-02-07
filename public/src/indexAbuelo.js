@@ -1,5 +1,5 @@
 import * as components from './components/indexPadre.js';
-
+import data from './Data/Candidatos.js';
 class AppContainer extends HTMLElement {
 	constructor() {
 		super();
@@ -11,9 +11,11 @@ class AppContainer extends HTMLElement {
 	}
 
 	render() {
-		this.shadowRoot.innerHTML = `
-        <my-card></my-card>
-        `;
+		data.forEach((Precidentes) => {
+			this.shadowRoot.innerHTML += `
+            <my-card name="${Precidentes.name}" city="${Precidentes.city}" img="${Precidentes.img}"></my-card>
+            `;
+		});
 	}
 }
 

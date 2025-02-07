@@ -2,10 +2,11 @@ class Card extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
+		this.voto = 0;
 	}
 
 	static get observedAttributes() {
-		return ['title', 'subtitle', 'votes'];
+		return ['name', 'city', 'Img'];
 	}
 
 	attributeChangedCallback(propName, oldValue, newValue) {
@@ -16,28 +17,25 @@ class Card extends HTMLElement {
 	connectedCallback() {
 		this.render();
 	}
-
+	increaseCount() {
+		this.voto++;
+		this.render();
+	}
 	render() {
 		this.shadowRoot.innerHTML = `
         <div>
-            <h1>${this.title}</h1>
-            <h5>${this.subtitle}</h5>
-            <p>Votos: ${this.votes}</p>
-            <button>Votar</button>
+
+            <h1>${this.name}</h1>
+            <h5>${this.city}</h5>
+            <button>votos: ${this.voto}</button>
+
         </div>
+
         `;
 
-		this.shadowRoot.querySelector('button').addEventListener('click', () => {
-			this.dispatchEvent(
-				new CustomEvent('vote', {
-					detail: { candidate: this.title },
-					bubbles: true,
-					composed: true,
-				})
-			);
-		});
+		this.shadowRoot.querySelector('button').addEventListener('click', () => this.increaseCount());
 	}
 }
-customElements.define('my-card', Card);
 
 export default Card;
+customElements.define('my-card', Card);
